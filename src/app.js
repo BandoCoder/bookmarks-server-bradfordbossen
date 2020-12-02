@@ -14,8 +14,6 @@ const morganOption = NODE_ENV === "production" ? "tiny" : "common";
 app.use(morgan(morganOption));
 app.use(helmet());
 app.use(cors());
-app.use(bookmarkRouter);
-
 // Token Validator
 app.use(function validateBearerToken(req, res, next) {
   const apiToken = process.env.API_TOKEN;
@@ -28,6 +26,8 @@ app.use(function validateBearerToken(req, res, next) {
   // move to the next middleware
   next();
 });
+
+app.use(bookmarkRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello, boilerplate; BRUV");
