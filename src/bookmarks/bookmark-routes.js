@@ -50,7 +50,7 @@ bookmarkRouter
 
     //is there a bookmark with that id?
     if (!bookmark) {
-      logger.errror(`Bookmark with id:${id} not found.`);
+      logger.error(`Bookmark with id:${id} not found.`);
       return res.status(404).send("404 Not Found");
     }
     res.json(bookmark);
