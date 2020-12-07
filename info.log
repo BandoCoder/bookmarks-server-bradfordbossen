@@ -2,3 +2,5 @@
 {"message":"Bookmark with id:cki6ix7hq000604w3ipp4sgyq deleted","level":"info"}
 {"message":"Bookmark with id:cki6ix7hq000604w3ipp4sgyq deleted","level":"info"}
 {"message":"Bookmarks with id 25008514-83fe-48a1-9daa-d280dbee2275 created","level":"info"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
