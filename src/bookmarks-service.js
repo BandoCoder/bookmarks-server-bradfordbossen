@@ -5,7 +5,7 @@ const BookmarksService = {
   insertBookmark(knex, newBookmark) {
     return knex
       .insert(newBookmark)
-      .into("Bookmarkss")
+      .into("bookmarks")
       .returning("*")
       .then((rows) => {
         return rows[0];
@@ -14,10 +14,10 @@ const BookmarksService = {
   getById(knex, id) {
     return knex.from("bookmarks").select("*").where("id", id).first();
   },
-  deleteArticle(knex, id) {
+  deleteBookmark(knex, id) {
     return knex("bookmarks").where({ id }).delete();
   },
-  updateArticle(knex, id, newBookmarkFields) {
+  updateBookmark(knex, id, newBookmarkFields) {
     return knex("bookmarks").where({ id }).update(newBookmarkFields);
   },
 };
