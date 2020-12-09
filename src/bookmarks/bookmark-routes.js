@@ -6,7 +6,7 @@ const bodyParser = express.json();
 
 // basic routes get and post
 bookmarkRouter
-  .route("/bookmarks")
+  .route("/api/bookmarks")
   .get((req, res, next) => {
     const knexInstance = req.app.get("db");
 
@@ -30,14 +30,17 @@ bookmarkRouter
 
     BookmarksService.insertBookmark(req.app.get("db"), newBookmark)
       .then((bookmark) => {
-        res.status(201).location(`/bookmarks/${bookmark.id}`).json(bookmark);
+        res
+          .status(201)
+          .location(req.originalUrl + `${bookmark.id}`)
+          .json(bookmark);
       })
       .catch(next);
   });
 
 // id routes get post delete
 bookmarkRouter
-  .route("/bookmarks/:id")
+  .route("/api/bookmarks/:id")
   .all((req, res, next) => {
     const knexInstance = req.app.get("db");
     BookmarksService.getById(knexInstance, req.params.id)
@@ -64,6 +67,28 @@ bookmarkRouter
   .delete((req, res, next) => {
     BookmarksService.deleteBookmark(req.app.get("db"), req.params.id)
       .then(() => {
+        res.status(204).end();
+      })
+      .catch(next);
+  })
+  .patch(bodyParser, (req, res, next) => {
+    const { title, url, description, rating } = req.body;
+    const dataToUpdate = { title, url, description, rating };
+
+    const numberOfValues = Object.values(dataToUpdate).filter(Boolean).length;
+
+    if (numberOfValues == 0) {
+      return res.status(400).json({
+        error: { message: `Request body must contain something to update` },
+      });
+    }
+
+    BookmarksService.updateBookmark(
+      req.app.get("db"),
+      req.params.id,
+      dataToUpdate
+    )
+      .then((numRowsAffected) => {
         res.status(204).end();
       })
       .catch(next);
