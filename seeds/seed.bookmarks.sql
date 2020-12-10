@@ -1,12 +1,12 @@
-insert into bookmarks (title, link, descript)
-values
-    ('Thinkful', 'http://www.thinkful.com', 'description'),
-    ('Heroku', 'http://www.heroku.com', 'description'),
-    ('Vercel', 'http://www.Vercel.com', 'description'),
-    ('Thinkful', 'http://www.thinkful.com', 'description'),
-    ('Thinkful', 'http://www.thinkful.com', 'description'),
-    ('Thinkful', 'http://www.thinkful.com', 'description'),
-    ('Thinkful', 'http://www.thinkful.com', 'description'),
-    ('Thinkful', 'http://www.thinkful.com', 'description'),
-    ('Thinkful', 'http://www.thinkful.com', 'description'),
-    ('Thinkful', 'http://www.thinkful.com', 'description');
+INSERT INTO bookmarks (title, url, description, rating)
+VALUES
+    ('Thinkful', 'http://www.thinkful.com', 'description', 3),
+    ('Heroku', 'http://www.heroku.com', 'description', 3),
+    ('Vercel', 'http://www.Vercel.com', 'description', 3),
+    ('Thinkful', 'http://www.thinkful.com', 'description', 3),
+    ('Thinkful', 'http://www.thinkful.com', 'description', 3),
+    ('Thinkful', 'http://www.thinkful.com', 'description', 3),
+    ('Thinkful', 'http://www.thinkful.com', 'description', 3),
+    ('Thinkful', 'http://www.thinkful.com', 'description', 3),
+    ('Thinkful', 'http://www.thinkful.com', 'description', 3),
+    ('Thinkful', 'http://www.thinkful.com', 'description', 3);
